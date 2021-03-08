@@ -7,8 +7,9 @@
 template <typename T> // Generic 
 class Stack { 
     public: 
-        Stack(unsigned int s) { 
+        Stack(unsigned int s) {
             vals = new T[s]; // Allocates s addresses while calling the T* constructor
+            maxSize = s; 
             ptr = -1;  
         };
 
