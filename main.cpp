@@ -1,5 +1,4 @@
 #include <iostream> // Library for input/output 
-#include <fstream> // Library for file manipulation
 #include <string> // Library for working with strings - Strings are normally defined as const char* types, however by using a string this provides manipulation methods
 #include <vector> // Library for a form of linked lists
 
@@ -93,6 +92,10 @@ void extA() {
     }
 };
 
+inline int min(int a, int b) {
+    return (a > b) ? b : a;
+};
+
 // If it is possible to pop a value (index < k), then it is possible to use that value provided there is at least one operation that can be made (index < k-1). 
 // Alternatively, it is possible to use a value if it is at index k because no pop is required
 // Thus, the output is the maximum over the first k+1 values excluding the value at index k-1
@@ -109,10 +112,16 @@ void extB() {
         stackContents.push_back(stoi(s));
     }
     int max = stackContents[0];
-    for (int i = 0; i <= k; i++) {
-        if (i != k-1 && stackContents[i] > max) 
+    bool newMax = false; 
+    for (int i = 0; i <= min(stackContents.size()-1, k); ++i) {
+        std::cout << "Index: " << i << " Value: " << stackContents[i] << std::endl; 
+        if (i != k-1 && stackContents[i] > max) { 
             max = stackContents[i];
+            newMax = true; 
+        }
     }
+    if (!newMax) 
+        max = -1; // Deals with the possibility that a new maximum is not introduced
     std::cout << max << std::endl; 
 };
 
