@@ -114,7 +114,6 @@ void extB() {
     int max = stackContents[0];
     bool newMax = false; 
     for (int i = 0; i <= min(stackContents.size()-1, k); ++i) {
-        std::cout << "Index: " << i << " Value: " << stackContents[i] << std::endl; 
         if (i != k-1 && stackContents[i] > max) { 
             max = stackContents[i];
             newMax = true; 
